@@ -1,3 +1,7 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +45,7 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Customer<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <!-- <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li> -->
