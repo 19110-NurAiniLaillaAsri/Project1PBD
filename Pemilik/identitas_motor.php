@@ -1,3 +1,9 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+require 'function/kelola_motor.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +31,9 @@
                     <a href="identitas_motor.php" class="active" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
                 </li>
                 <li>
+                    <a href="buat_user.php"style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Buat User</span></a>
+                </li>
+                <li>
                     <a href="transaksi.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Transaksi</span></a>
                 </li>
 			</ul>
@@ -41,7 +50,7 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Pemilik<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
@@ -64,71 +73,71 @@
                         <form method="POST">
                             <div class="form-group mt-2">
                                 <label for="NoRegistrasi">No Registrasi</label>
-                                <input type="NoRegistrasi" name="NoRegistrasi" class="form-control">
+                                <input type="text" name="NoRegistrasi" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="NamaPemilik">Nama Pemilik</label>
-                                <input type="NamaPemilik" name="NamaPemilik" class="form-control">
+                                <input type="text" name="NamaPemilik" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="Alamat">Alamat</label>
-                                <input type="Alamat" name="Alamat" class="form-control">
+                                <input type="text" name="Alamat" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="NoRangka">No Rangka</label>
-                                <input type="NoRangka" name="NoRangka" class="form-control">
+                                <input type="text" name="NoRangka" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="NoMesin">No Mesin</label>
-                                <input type="NoMesin" name="NoMesin" class="form-control">
+                                <input type="text" name="NoMesin" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="PlatNo">Plat No</label>
-                                <input type="PlatNo" name="PlatNo" class="form-control">
+                                <input type="text" name="PlatNo" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="Merk">Merk</label>
-                                <input type="Merk" name="Merk" class="form-control">
+                                <input type="text" name="Merk" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="Type">Type</label>
-                                <input type="Type" name="Type" class="form-control">
+                                <input type="text" name="Type" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="Model">Model</label>
-                                <input type="Model" name="Model" class="form-control">
+                                <input type="text" name="Model" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="TahunPembuatan">Tahun Pembuatan</label>
-                                <input type="TahunPembuatan" name="TahunPembuatan" class="form-control">
+                                <input type="text" name="TahunPembuatan" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="IsiSilinder">Isi Silinder</label>
-                                <input type="IsiSilinder" name="IsiSilinder" class="form-control">
+                                <input type="text" name="IsiSilinder" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="BahanBakar">Bahan Bakar</label>
-                                <input type="BahanBakar" name="BahanBakar" class="form-control">
+                                <input type="text" name="BahanBakar" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="WarnaTNKB">Warna TNKB</label>
-                                <input type="WarnaTNKB" name="WarnaTNKB" class="form-control">
+                                <input type="text" name="WarnaTNKB" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="TahunRegistrasi">Tahun Registrasi</label>
-                                <input type="TahunRegistrasi" name="TahunRegistrasi" class="form-control">
+                                <input type="text" name="TahunRegistrasi" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="NoBPKB">No BPKB</label>
-                                <input type="NoBPKB" name="NoBPKB" class="form-control">
+                                <input type="number" name="NoBPKB" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="KodeLokasi">Kode Lokasi</label>
-                                <input type="KodeLokasi" name="KodeLokasi" class="form-control">
+                                <input type="text" name="KodeLokasi" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="MasaBerlakuSTNK">Masa Berlaku STNK</label>
-                                <input type="MasaBerlakuSTNK" name="MasaBerlakuSTNK" class="form-control">
+                                <input type="date" name="MasaBerlakuSTNK" class="form-control">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary mt-3" name="identitasmotor" style="width: 25%;">Kirim</button>
@@ -150,6 +159,7 @@
                                 <th scope="col">No Rangka</th>
                                 <th scope="col">No Mesin</th>
                                 <th scope="col">Plat No</th>
+                                <th scope="col">Merk</th>
                                 <th scope="col">No Rangka</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Model</th>
@@ -165,74 +175,43 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit" style="width: 40px";><i class="far fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" style="width: 40px";><i class="far fa-trash-alt"></i></button>
-                                    </td>
+                            <?php
+                                while($row = mysqli_fetch_array($query)){
+                                    echo '
+                                    <form method = "POST">
+                                        <div class="invisible position-absolute">
+                                            <input type="text" class="form-control" name="getId" value="'.$row['Id'].'">
+                                        </div>
+                                        <tr>
+                                            <td>'.$row['Id'].'</td>
+                                            <td>'.$row['NoRegistrasi'].'</td>
+                                            <td>'.$row['NamaPemilik'].'</td>
+                                            <td>'.$row['Alamat'].'</td>
+                                            <td>'.$row['NoRangka'].'</td>
+                                            <td>'.$row['NoMesin'].'</td>
+                                            <td>'.$row['PlatNo'].'</td>
+                                            <td>'.$row['Merk'].'</td>
+                                            <td>'.$row['Type'].'</td>
+                                            <td>'.$row['Model'].'</td>
+                                            <td>'.$row['TahunPembuatan'].'</td>
+                                            <td>'.$row['IsiSilinder'].'</td>
+                                            <td>'.$row['BahanBakar'].'</td>
+                                            <td>'.$row['WarnaTNKB'].'</td>
+                                            <td>'.$row['TahunRegistrasi'].'</td>
+                                            <td>'.$row['NoBPKB'].'</td>
+                                            <td>'.$row['KodeLokasi'].'</td>
+                                            <td>'.$row['MasaBerlakuSTNK'].'</td>
+                                            <td class="text-center">
+                                                '?><button type="submit" class="btn btn-warning" style="width: 40px"; name="editMotor"><i class="far fa-edit"></i></button>
+                                                <button type="submit" class="btn btn-danger" style="width: 40px"; name="hapusMotor" onclick="return confirm('Hapus Identitas Motor?')"><i class="far fa-trash-alt"></i></button><?php echo '
+                                            </td>
+                                            </td>
+                                        </tr>
+                                    </form>';
+                                }
+                                
+                            ?>
 
-<!-- Modal Edit Barang -->
-                                    <form action="" method="POST">
-                                        <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang Masuk</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <input class="form-control" type="text" name="id_barang" value="" aria-label="readonly input example" readonly><br>
-                                                        <input class="form-control" type="text" name="nama_barang" value="" aria-label="readonly input example" readonly><br>
-                                                        <input type="text" name="quantitas" value="" class="form-control" required><br>
-                                                        <input type="text" name="supplier" value="" class="form-control" required><br>
-                                                        <input type="hidden" name="id_barang" value="">
-                                                        <input type="hidden" name="id_masuk" value="">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="Submit" class="btn btn-primary" name="editmasuk">Submit</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-<!-- Form Modal Hapus -->
-                                    <form action="" method="POST">
-                                        <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Barang</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                Apakah Anda yakin ingin menghapus data <?=$nama_barang;?>
-                                                <input type="hidden" name="id_barang" value="<?=$id_barang;?>">
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="Submit" class="btn btn-danger" name="hapusbarang">Hapus</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </tr>
                                 
                             </tbody>
                         </table>
@@ -247,6 +226,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script> <!-- buat modal -->  
 
-    <!-- <a href="logout.php">logout luar</a> -->
 </body>
 </html>
