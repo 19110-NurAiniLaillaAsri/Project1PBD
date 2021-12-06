@@ -1,3 +1,9 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+require 'function/kelola_motor.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +25,13 @@
 		<div class="sidebar-menu">
 			<ul>
 				<li>
-                    <a href="home.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
+                    <a href="hometeller.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
                 </li>
                 <li>
                     <a href="identitas_motor.php" class="active" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
+                </li>
+                <li>
+                    <a href="buat_user.php"style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Buat User</span></a>
                 </li>
                 <li>
                     <a href="transaksi.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Transaksi</span></a>
@@ -41,11 +50,11 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Teller<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
-                <div class="dropdown-divider"></div>
+                <!-- <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
+                <div class="dropdown-divider"></div> -->
                 <!-- <li><a class="dropdown-item" href="ubahsandi.php">Ubah Kata Sandi</a></li>
                 <div class="dropdown-divider"></div> -->
                 <li><a class="dropdown-item" href="../logout.php" name="logout">Logout</a></li>
@@ -54,14 +63,6 @@
 		</header>
 <!-- Form Identitas Motor -->
 		<main>
-    		<div class="container-fluid">
-    			<div class="row card mb-4">
-    				<!-- <div class="col-4"> -->
-                    <div class="card-header text-center">
-    					<h3>Identitas Motor</h3>
-    				</div>
-                </div>
-            </div>
 <!-- Tabel -->
             <div class="container-fluid">
     			<div class="row card mb-4">
@@ -75,6 +76,7 @@
                                 <th scope="col">No Rangka</th>
                                 <th scope="col">No Mesin</th>
                                 <th scope="col">Plat No</th>
+                                <th scope="col">Merk</th>
                                 <th scope="col">No Rangka</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Model</th>
@@ -86,30 +88,42 @@
                                 <th scope="col">No BPKB</th>
                                 <th scope="col">Kode Lokasi</th>
                                 <th scope="col">Masa Berlaku STNK</th>
-                                <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                </tr>
+                            <?php
+                                while($row = mysqli_fetch_array($query)){
+                                    echo '
+                                    <form method = "POST">
+                                        <div class="invisible position-absolute">
+                                            <input type="text" class="form-control" name="getId" value="'.$row['Id'].'">
+                                        </div>
+                                        <tr>
+                                            <td>'.$row['Id'].'</td>
+                                            <td>'.$row['NoRegistrasi'].'</td>
+                                            <td>'.$row['NamaPemilik'].'</td>
+                                            <td>'.$row['Alamat'].'</td>
+                                            <td>'.$row['NoRangka'].'</td>
+                                            <td>'.$row['NoMesin'].'</td>
+                                            <td>'.$row['PlatNo'].'</td>
+                                            <td>'.$row['Merk'].'</td>
+                                            <td>'.$row['Type'].'</td>
+                                            <td>'.$row['Model'].'</td>
+                                            <td>'.$row['TahunPembuatan'].'</td>
+                                            <td>'.$row['IsiSilinder'].'</td>
+                                            <td>'.$row['BahanBakar'].'</td>
+                                            <td>'.$row['WarnaTNKB'].'</td>
+                                            <td>'.$row['TahunRegistrasi'].'</td>
+                                            <td>'.$row['NoBPKB'].'</td>
+                                            <td>'.$row['KodeLokasi'].'</td>
+                                            <td>'.$row['MasaBerlakuSTNK'].'</td>
+                                            
+                                        </tr>
+                                    </form>';
+                                }
+                                
+                            ?>
+
                                 
                             </tbody>
                         </table>

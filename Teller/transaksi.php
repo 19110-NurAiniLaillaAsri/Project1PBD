@@ -1,3 +1,7 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +23,13 @@
 		<div class="sidebar-menu">
 			<ul>
 				<li>
-                    <a href="home.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
+                    <a href="hometeller.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
                 </li>
                 <li>
                     <a href="identitas_motor.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
+                </li>
+                <li>
+                    <a href="buat_user.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Buat User</span></a>
                 </li>
                 <li>
                     <a href="transaksi.php" class="active" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Transaksi</span></a>
@@ -41,11 +48,11 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Teller<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
-                <div class="dropdown-divider"></div>
+                <!-- <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
+                <div class="dropdown-divider"></div> -->
                 <!-- <li><a class="dropdown-item" href="ubahsandi.php">Ubah Kata Sandi</a></li>
                 <div class="dropdown-divider"></div> -->
                 <li><a class="dropdown-item" href="../logout.php" name="logout">Logout</a></li>
