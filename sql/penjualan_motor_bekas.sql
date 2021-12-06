@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2021 at 03:19 PM
+-- Generation Time: Dec 06, 2021 at 05:58 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -48,6 +48,13 @@ CREATE TABLE `identitas_motor` (
   `MasaBerlakuSTNK` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `identitas_motor`
+--
+
+INSERT INTO `identitas_motor` (`Id`, `NoRegistrasi`, `NamaPemilik`, `Alamat`, `NoRangka`, `NoMesin`, `PlatNo`, `Merk`, `Type`, `Model`, `TahunPembuatan`, `IsiSilinder`, `BahanBakar`, `WarnaTNKB`, `TahunRegistrasi`, `NoBPKB`, `KodeLokasi`, `MasaBerlakuSTNK`) VALUES
+(1, 'T123D', 'User', 'Karawang', 'MH122', 'HG455 ', 'T123D ', 'Honda', 'Manual', 'Sepeda Motor', '2017', '1', 'Bensin', 'Hitam', '2016', '2345', '23', '2021-12-06');
+
 -- --------------------------------------------------------
 
 --
@@ -68,9 +75,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`IdUser`, `Nama`, `Password`, `HakAkses`, `Create_Date`, `Manager`) VALUES
+(2, 'Admin', '123', 'Pemilik', '2021-12-06', ''),
 (10001, 'Teller', 'Teller', 'Teller', '2021-11-30', ''),
 (12345, 'User', 'User', 'Pemilik', '2021-11-30', ''),
-(20001, 'Teknisi', 'Teknisi', 'Teknisi', '2021-11-30', ''),
+(20001, 'Teknisi', '', 'Teknisi', '2021-11-30', ''),
 (30001, 'Customer', 'Customer', 'Customer', '2021-11-30', '');
 
 --
@@ -88,6 +96,16 @@ ALTER TABLE `identitas_motor`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`IdUser`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `identitas_motor`
+--
+ALTER TABLE `identitas_motor`
+  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
