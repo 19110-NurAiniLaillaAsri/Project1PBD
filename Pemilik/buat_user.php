@@ -1,3 +1,10 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+require 'function/buat_user.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +32,9 @@
                     <a href="identitas_motor.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
                 </li>
                 <li>
+                    <a href="buat_user.php" class="active" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Buat User</span></a>
+                </li>
+                <li>
                     <a href="transaksi.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Transaksi</span></a>
                 </li>
 			</ul>
@@ -41,7 +51,7 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Pemilik<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
@@ -64,24 +74,24 @@
                         <form method="POST">
                             <div class="form-group mt-2">
                                 <label for="IdUser">Id User</label>
-                                <input type="IdUser" name="IdUser" class="form-control">
+                                <input type="text" name="IdUser" class="form-control" required>
                             </div>
                             <div class="form-group mt-2">
                                 <label for="Nama">Nama</label>
-                                <input type="Nama" name="Nama" class="form-control">
+                                <input type="text" name="Nama" class="form-control" required>
                             </div>
                             <div class="form-group mt-2">
                                 <label for="Password">Password</label>
-                                <input type="NoRaPasswordngka" name="Password" class="form-control">
+                                <input type="password" name="Password" class="form-control" required>
                             </div>
                             <div class="form-group mt-2">
                                 <label for="HakAkses">Hak Akses</label>
                                 <!-- <input type="HakAkses" name="HakAkses" class="form-control"> -->
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Pemilik</option>
-                                    <option>Teller</option>
-                                    <option>Teknisi</option>
-                                    <option>Customer</option>
+                                <select class="form-select" id="validationCustom04" name="HakAkses" required>
+                                    <option value="Pemilik">Pemilik</option>
+                                    <option value="Teller">Teller</option>
+                                    <option value="Teknisi">Teknisi</option>
+                                    <option value="Customer">Customer</option>
                                 </select>
                             </div>
                             <div class="text-center">
@@ -107,61 +117,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit" style="width: 40px";><i class="far fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" style="width: 40px";><i class="far fa-trash-alt"></i></button>
-                                    </td>
-<!-- Form Modal Edit -->
-                                    <form action="" method="POST">
-                                        <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang Masuk</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <input class="form-control" type="text" name="id_barang" value="" aria-label="readonly input example" readonly><br>
-                                                        <input class="form-control" type="text" name="nama_barang" value="" aria-label="readonly input example" readonly><br>
-                                                        <input type="text" name="quantitas" value="" class="form-control" required><br>
-                                                        <input type="text" name="supplier" value="" class="form-control" required><br>
-                                                        <input type="hidden" name="id_barang" value="">
-                                                        <input type="hidden" name="id_masuk" value="">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="Submit" class="btn btn-primary" name="editmasuk">Submit</button>
-                                                    </div>
-                                                </div>
+                                <?php
+                                    while($row = mysqli_fetch_array($query)){
+                                        echo '
+                                        <form method = "POST">
+                                            <div class="invisible position-absolute">
+                                                <input type="text" class="form-control" name="getId" value="'.$row['IdUser'].'">
                                             </div>
-                                        </div>
-                                    </form>
-<!-- Form Modal Hapus -->
-                                    <form action="" method="POST">
-                                        <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Barang</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                Apakah Anda yakin ingin menghapus data <?=$nama_barang;?>
-                                                <input type="hidden" name="id_barang" value="<?=$id_barang;?>">
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="Submit" class="btn btn-danger" name="hapusbarang">Hapus</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </tr>
+                                            <tr>
+                                                <td>'.$row['IdUser'].'</td>
+                                                <td>'.$row['Nama'].'</td>
+                                                <td>'.$row['Password'].'</td>
+                                                <td>'.$row['HakAkses'].'</td>
+                                                <td>'.$row['Create_Date'].'</td>
+                                                <td class="text-center">
+                                                    '?><button type="submit" class="btn btn-warning" style="width: 40px"; name="editUser"><i class="far fa-edit"></i></button>
+                                                    <button type="submit" class="btn btn-danger" style="width: 40px"; name="hapusUser" onclick="return confirm('Hapus User?')"><i class="far fa-trash-alt"></i></button><?php echo '
+                                                </td>
+                                                </td>
+                                            </tr>
+                                        </form>';
+                                    }
+                                
+                                ?>
+                                
                                 
                             </tbody>
                         </table>
@@ -174,6 +153,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script> <!-- buat modal -->  
 
-    <!-- <a href="logout.php">logout luar</a> -->
 </body>
 </html>
