@@ -1,3 +1,7 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
 		<div class="sidebar-menu">
 			<ul>
 				<li>
-                    <a href="home.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
+                    <a href="hometeknisi.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
                 </li>
                 <!-- <li>
                     <a href="identitas_motor.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
@@ -41,7 +45,7 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Teknisi<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <!-- <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li> -->
@@ -66,59 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <div class="row card mb-4">
-                    <div class="table-responsive-xxl">
-                        <table class="table" style="min-width: 3000px;">
-                            <thead class="text-center">
-                                <tr>
-                                <th scope="col">No Registrasi</th>
-                                <th scope="col">Nama Pemilik</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">No Rangka</th>
-                                <th scope="col">No Mesin</th>
-                                <th scope="col">Plat No</th>
-                                <th scope="col">No Rangka</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Model</th>
-                                <th scope="col">Tahun Pembuatan</th>
-                                <th scope="col">Isi Silinder</th>
-                                <th scope="col">Bahan Bakar</th>
-                                <th scope="col">Warna TNKB</th>
-                                <th scope="col">Tahun Registrasi</th>
-                                <th scope="col">No BPKB</th>
-                                <th scope="col">Kode Lokasi</th>
-                                <th scope="col">Masa Berlaku STNK</th>
-                                <th scope="col">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            
         </main>
 <!-- Script -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>

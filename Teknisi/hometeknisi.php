@@ -1,3 +1,7 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
 		<div class="sidebar-menu">
 			<ul>
 				<li>
-                    <a href="home.php" class="active" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
+                    <a href="hometeknisi.php" class="active" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Home</span></a>
                 </li>
                 <!-- <li>
                     <a href="identitas_motor.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
@@ -41,7 +45,7 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Teknisi<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <!-- <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li> -->
