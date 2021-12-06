@@ -1,3 +1,8 @@
+<?php
+require '../koneksi.php';
+require 'function/session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +30,9 @@
                     <a href="identitas_motor.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Identitas Motor</span></a>
                 </li>
                 <li>
+                    <a href="buat_user.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Buat User</span></a>
+                </li>
+                <li>
                     <a href="transaksi.php" style="text-decoration: none;"><i class="fas fa-table me-2"></i><span>Transaksi</span></a>
                 </li>
 			</ul>
@@ -41,11 +49,11 @@
 			</h2>
 
 			<div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Pemilik<?= ucfirst($_SESSION['nama_user']);?></a>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
-                <div class="dropdown-divider"></div>
+                <!-- <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
+                <div class="dropdown-divider"></div> -->
                 <!-- <li><a class="dropdown-item" href="ubahsandi.php">Ubah Kata Sandi</a></li>
                 <div class="dropdown-divider"></div> -->
                 <li><a class="dropdown-item" href="../logout.php" name="logout">Logout</a></li>
@@ -64,6 +72,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script> <!-- buat modal -->  
 
-    <a href="logout.php">logout luar</a>
 </body>
 </html>
