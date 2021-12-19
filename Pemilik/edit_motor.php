@@ -23,7 +23,7 @@ $row = mysqli_fetch_array($query);
 	<input type="checkbox" id="nav-toggle"> 
 	<div class="sidebar">
 		<div class="sidebar-brand">
-			<h2><span class="fas fa-box-open"></span><span>judul</span></h1>
+			<h2><span class="fas fa-box-open"></span><span>SIJUNTOR</span></h1>
 		</div>
 
 		<div class="sidebar-menu">
@@ -57,10 +57,6 @@ $row = mysqli_fetch_array($query);
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?= ucfirst($_SESSION['Nama']);?></a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="buat_user.php">Buat Akun</a></li>
-                <div class="dropdown-divider"></div>
-                <!-- <li><a class="dropdown-item" href="ubahsandi.php">Ubah Kata Sandi</a></li>
-                <div class="dropdown-divider"></div> -->
                 <li><a class="dropdown-item" href="../logout.php" name="logout">Logout</a></li>
               </ul>
             </div>
@@ -69,12 +65,11 @@ $row = mysqli_fetch_array($query);
 		<main>
     		<div class="container-fluid">
     			<div class="row card mb-4">
-    				<!-- <div class="col-4"> -->
                     <div class="card-header text-center">
     					<h3>Identitas Motor</h3>
     				</div>
                     <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="form-group mt-2">
                                 <label for="NoRegistrasi">No Registrasi</label>
                                 <input type="text" name="NoRegistrasi" class="form-control" value="<?php echo $row['NoRegistrasi']?>">
@@ -143,6 +138,26 @@ $row = mysqli_fetch_array($query);
                                 <label for="MasaBerlakuSTNK">Masa Berlaku STNK</label>
                                 <input type="date" name="MasaBerlakuSTNK" class="form-control" value="<?php echo $row['MasaBerlakuSTNK']?>">
                             </div>
+                            <div class="form-group mt-2">
+                                <label for="Gambar_Motor">Gambar Motor</label>
+                                <input type="file" name="Gambar_Motor" class="form-control" value="<?php echo $row['Gambar_Motor']?>">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Tgl_Beli">Tanggal Beli</label>
+                                <input type="date" name="Tgl_Beli" class="form-control" value="<?php echo $row['Tgl_Beli']?>">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Harga_Beli">Harga Beli</label>
+                                <input type="number" name="Harga_Beli" class="form-control" value="<?php echo $row['Harga_Beli']?>">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Tgl_Jual">Tanggal Jual</label>
+                                <input type="date" name="Tgl_Jual" class="form-control" value="<?php echo $row['Tgl_Jual']?>">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Harga_Jual">Harga Jual</label>
+                                <input type="number" name="Harga_Jual" class="form-control" value="<?php echo $row['Harga_Jual']?>">
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary mt-3" name="updateMotor" style="width: 25%;">Update</button>
                             </div>
@@ -151,13 +166,9 @@ $row = mysqli_fetch_array($query);
                 </div>
             </div>
         </main>
-
-
 <!-- Script -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script> <!-- buat modal -->  
-
-    <!-- <a href="logout.php">logout luar</a> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>
 </html>
