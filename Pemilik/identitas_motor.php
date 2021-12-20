@@ -19,7 +19,7 @@ require 'function/kelola_motor.php';
 	<input type="checkbox" id="nav-toggle"> 
 	<div class="sidebar">
 		<div class="sidebar-brand">
-			<h2><span class="fas fa-box-open"></span><span>judul</span></h1>
+			<h2><span class="fas fa-box-open"></span><span>SIJUNTOR</span></h1>
 		</div>
 
 		<div class="sidebar-menu">
@@ -70,7 +70,7 @@ require 'function/kelola_motor.php';
     					<h3>Identitas Motor</h3>
     				</div>
                     <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="form-group mt-2">
                                 <label for="NoRegistrasi">No Registrasi</label>
                                 <input type="text" name="NoRegistrasi" class="form-control">
@@ -129,7 +129,7 @@ require 'function/kelola_motor.php';
                             </div>
                             <div class="form-group mt-2">
                                 <label for="NoBPKB">No BPKB</label>
-                                <input type="number" name="NoBPKB" class="form-control">
+                                <input type="text" name="NoBPKB" class="form-control">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="KodeLokasi">Kode Lokasi</label>
@@ -138,6 +138,26 @@ require 'function/kelola_motor.php';
                             <div class="form-group mt-2">
                                 <label for="MasaBerlakuSTNK">Masa Berlaku STNK</label>
                                 <input type="date" name="MasaBerlakuSTNK" class="form-control">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Gambar_Motor">Gambar Motor</label>
+                                <input type="file" name="Gambar_Motor" class="form-control">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Tgl_Beli">Tanggal Beli</label>
+                                <input type="date" name="Tgl_Beli" class="form-control">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Harga_Beli">Harga Beli</label>
+                                <input type="number" name="Harga_Beli" class="form-control">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Tgl_Jual">Tanggal Jual</label>
+                                <input type="date" name="Tgl_Jual" class="form-control">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="Harga_Jual">Harga Jual</label>
+                                <input type="number" name="Harga_Jual" class="form-control">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary mt-3" name="identitasmotor" style="width: 25%;">Kirim</button>
@@ -171,6 +191,11 @@ require 'function/kelola_motor.php';
                                 <th scope="col">No BPKB</th>
                                 <th scope="col">Kode Lokasi</th>
                                 <th scope="col">Masa Berlaku STNK</th>
+                                <th scope="col">Gambar Motor</th>
+                                <th scope="col">Tanggal Beli</th>
+                                <th scope="col">Harga Beli</th>
+                                <th scope="col">Tanggal Jual</th>
+                                <th scope="col">Harga Jual</th>
                                 <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -178,7 +203,7 @@ require 'function/kelola_motor.php';
                             <?php
                                 while($row = mysqli_fetch_array($query)){
                                     echo '
-                                    <form method = "POST">
+                                    <form method = "POST" enctype="multipart/form-data">
                                         <div class="invisible position-absolute">
                                             <input type="text" class="form-control" name="getId" value="'.$row['Id'].'">
                                         </div>
@@ -201,6 +226,11 @@ require 'function/kelola_motor.php';
                                             <td>'.$row['NoBPKB'].'</td>
                                             <td>'.$row['KodeLokasi'].'</td>
                                             <td>'.$row['MasaBerlakuSTNK'].'</td>
+                                            <td>'.$row['Gambar_Motor'].'</td>
+                                            <td>'.$row['Tgl_Beli'].'</td>
+                                            <td>'.$row['Harga_Beli'].'</td>
+                                            <td>'.$row['Tgl_Jual'].'</td>
+                                            <td>'.$row['Harga_Jual'].'</td>
                                             <td class="text-center">
                                                 '?><button type="submit" class="btn btn-warning" style="width: 40px"; name="editMotor"><i class="far fa-edit"></i></button>
                                                 <button type="submit" class="btn btn-danger" style="width: 40px"; name="hapusMotor" onclick="return confirm('Hapus Identitas Motor?')"><i class="far fa-trash-alt"></i></button><?php echo '
@@ -226,5 +256,6 @@ require 'function/kelola_motor.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script> <!-- buat modal -->  
 
+    <!-- <a href="logout.php">logout luar</a> -->
 </body>
 </html>
